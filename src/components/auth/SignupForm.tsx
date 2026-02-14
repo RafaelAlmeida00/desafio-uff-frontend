@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
@@ -8,12 +9,14 @@ import { useAuth } from '@/contexts/AuthContext'
 
 export function SignupForm() {
   const { signup } = useAuth()
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignupInput>({
     resolver: zodResolver(signupSchema),
   })
 
   const onSubmit = async (data: SignupInput) => {
     await signup(data)
+    navigate('/login')
   }
 
   return (

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
@@ -8,12 +9,14 @@ import { useAuth } from '@/contexts/AuthContext'
 
 export function LoginForm() {
   const { login } = useAuth()
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
   })
 
   const onSubmit = async (data: LoginInput) => {
     await login(data.email, data.senha)
+    navigate('/')
   }
 
   return (
