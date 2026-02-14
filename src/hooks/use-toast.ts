@@ -1,4 +1,5 @@
 import * as React from "react"
+import type { ToastActionElement, ToastProps } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
@@ -7,10 +8,8 @@ type ToasterToast = {
   id: string
   title?: React.ReactNode
   description?: React.ReactNode
-  action?: React.ReactNode
-  open?: boolean
-  onOpenChange?: (open: boolean) => void
-} & React.ComponentProps<"div">
+  action?: ToastActionElement
+} & ToastProps
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
@@ -87,8 +86,6 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
-      // ! Side effects ! - This could be extracted into a useEffect,
-      // but to keep it simple here we leave it.
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
