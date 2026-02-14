@@ -11,7 +11,7 @@ import { useAuth } from '@/contexts/AuthContext';
 
 export function SignupPage() {
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { signup, isAuthenticated } = useAuth();
 
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -21,6 +21,12 @@ export function SignupPage() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [success, setSuccess] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const passwordRequirements = [
     { label: 'Mínimo 8 caracteres', met: password.length >= 8 },
