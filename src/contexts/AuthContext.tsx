@@ -20,10 +20,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { toast } = useToast()
 
   const login = useCallback(async (email: string, senha: string) => {
-    const { token } = await authApi.login({ email, senha })
-    tokenStorage.set(token)
-    setUser({ id: 0, nome: '', email })
-    toast({ title: 'Login realizado com sucesso' })
+    try {
+      const { token } = await authApi.login({ email, senha })
+      tokenStorage.set(token)
+      setUser({ id: 0, nome: '', email })
+      toast({ title: 'Login realizado com sucesso' })
+    } catch (e: unknown) {
+      const msg = e && typeof e === 'object' && 'response' in e
+        ? (e as { response?: { data?: { message?: string } } }).response?.data?.message
+        : 'Erro ao realizar login'
+      toast({
+        variant: "destructive",
+        title: "Erro no login",
+        description: String(msg)
+      })
+      throw e
+    }
   }, [toast])
 
   const logout = useCallback(() => {
@@ -33,9 +45,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [toast])
 
   const signup = useCallback(async (data: SignupInput) => {
-    const newUser = await authApi.signup(data)
-    setUser(newUser as User)
-    toast({ title: 'Cadastro realizado com sucesso' })
+    try {
+      const newUser = await authApi.signup(data)
+      setUser(newUser as User)
+      toast({ title: 'Cadastro realizado com sucesso' })
+    } catch (e: unknown) {
+      const msg = e && typeof e === 'object' && 'response' in e
+        ? (e as { response?: { data?: { message?: string } } }).response?.data?.message
+        : 'Erro ao realizar cadastro'
+      toast({
+        variant: "destructive",
+        title: "Erro no cadastro",
+        description: String(msg)
+      })
+      throw e
+    }
   }, [toast])
 
   return (
