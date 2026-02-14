@@ -35,14 +35,12 @@ export function LoginPage() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background p-4">
-      {/* Background gradient effect */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
         <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
-      {/* Grid pattern overlay */}
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
@@ -59,14 +57,6 @@ export function LoginPage() {
       >
         <Card className="backdrop-blur-xl bg-background/50 border-muted/40 shadow-2xl">
           <CardHeader className="space-y-4 text-center">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-              className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/20"
-            >
-              <Sparkles className="h-8 w-8 text-primary" />
-            </motion.div>
             <div>
               <CardTitle className="text-2xl">Plataforma de Tarefas</CardTitle>
               <CardDescription className="mt-2">
