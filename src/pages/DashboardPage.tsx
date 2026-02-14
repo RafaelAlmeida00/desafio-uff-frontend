@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { TaskForm } from '@/components/tasks/TaskForm'
 import { TaskList } from '@/components/tasks/TaskList'
 import { TaskFilter, type FilterType } from '@/components/tasks/TaskFilter'
+import { TaskDashboard } from '@/pages/TaskDashboard'
 import { useTasks } from '@/hooks/useTasks'
 import { Loader2 } from 'lucide-react'
 
@@ -33,6 +34,8 @@ export function DashboardPage() {
         {loading && <div className="flex justify-center py-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}
         {error && <div className="text-destructive text-center py-4">{error}</div>}
         {!loading && !error && <TaskList tasks={tasks} onToggle={handleToggle} onDelete={deleteTask} />}
+        
+        {!loading && !error && <TaskDashboard tasks={tasks} />}
       </div>
     </div>
   )

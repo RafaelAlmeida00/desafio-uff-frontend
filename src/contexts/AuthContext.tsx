@@ -21,9 +21,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = useCallback(async (email: string, senha: string) => {
     try {
-      const { token } = await authApi.login({ email, senha })
+      const { token, user } = await authApi.login({ email, senha }) as any
       tokenStorage.set(token)
-      setUser({ id: 0, nome: '', email })
+      setUser(user)
       toast({ title: 'Login realizado com sucesso' })
     } catch (e: unknown) {
       const msg = e && typeof e === 'object' && 'response' in e
