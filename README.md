@@ -34,7 +34,7 @@ O objetivo é fornecer uma experiência de usuário fluida e intuitiva para que 
 1.  **Clone o repositório e navegue até a pasta:**
     ```bash
     git clone https://github.com/RafaelAlmeida00/desafio-uff-backend.git
-    cd desafiouffteste/frontend
+    cd <pasta gerada do clone>
     ```
 
 2.  **Instale as dependências:**
@@ -126,3 +126,20 @@ A principal defesa contra a execução de scripts maliciosos injetados nos dados
 - Nenhum dado é enviado para a API sem antes passar por uma rigorosa validação no frontend.
 - Utilizamos **Zod** em conjunto com **React Hook Form** para definir esquemas de validação (`src/schemas`). Isso garante a integridade dos dados (ex: formato de e-mail, comprimento mínimo de senha) e fornece feedback instantâneo ao usuário.
 - Essa prática também atua como uma primeira linha de defesa, reduzindo a carga no backend ao bloquear requisições malformadas ou inválidas antes mesmo de serem enviadas.
+
+---
+
+## Ideias Futuras
+
+Esta seção descreve possíveis melhorias e novas funcionalidades que podem ser implementadas para evoluir a plataforma.
+
+### Funcionalidades
+- **Gamificação:** Adicionar um sistema de pontos, medalhas ou recompensas pela conclusão de tarefas para aumentar o engajamento.
+- **Temas e Customização:** Implementar um seletor de temas (como modo claro/escuro já existente) e permitir que os usuários personalizem a aparência da interface.
+- **Suporte Multi-idioma (i18n):** Adaptar a aplicação para suportar múltiplos idiomas, expandindo seu alcance global.
+- **Compartilhamento de Tarefas:** Permitir que usuários convidem outros para colaborar em listas de tarefas específicas.
+
+### Segurança
+- **Autenticação de Dois Fatores (2FA):** Adicionar uma camada extra de segurança no login, exigindo um código de um aplicativo autenticador (TOTP).
+- **Content Security Policy (CSP):** Implementar um cabeçalho CSP rigoroso para mitigar ainda mais os riscos de ataques XSS e de injeção de dados, controlando quais recursos o navegador pode carregar.
+- **Scanner de Dependências Automatizado:** Integrar ferramentas como Snyk ou GitHub Dependabot para monitorar continuamente as dependências do projeto em busca de vulnerabilidades conhecidas.
