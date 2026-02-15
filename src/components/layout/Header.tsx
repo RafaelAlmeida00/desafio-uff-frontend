@@ -10,9 +10,9 @@ export function Header() {
   const { theme, toggleTheme } = useTheme()
   const [showLogoutModal, setShowLogoutModal] = useState(false)
 
-  const handleLogoutConfirm = () => {
+  const handleLogoutConfirm = async () => {
     setShowLogoutModal(false)
-    logout()
+    await logout()
   }
 
   return (
@@ -22,7 +22,7 @@ export function Header() {
           <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             Plataforma de Tarefas
           </h1>
-          
+
           <div className="flex items-center gap-2 sm:gap-4">
             <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label="Alternar tema" className="rounded-full">
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -34,11 +34,11 @@ export function Header() {
                   <UserIcon className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm font-medium truncate max-w-[150px]">{user?.nome || 'Usuário'}</span>
                 </div>
-                
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  onClick={() => setShowLogoutModal(true)} 
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setShowLogoutModal(true)}
                   aria-label="Sair"
                   className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
                 >
