@@ -47,7 +47,7 @@ O objetivo é fornecer uma experiência de usuário fluida e intuitiva para que 
     ```bash
     cp .env.example .env.local
     ```
-    Altere a variável `VITE_API_URL` para o endereço onde o backend está rodando (por padrão, `http://localhost:3000/api`).
+    Altere a variável `VITE_API_URL` para o endereço onde o backend está rodando (por padrão, `http://localhost:3000`).
 
 4.  **Inicie o servidor de desenvolvimento:**
     ```bash
