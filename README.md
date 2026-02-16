@@ -9,11 +9,11 @@ O objetivo é fornecer uma experiência de usuário fluida e intuitiva para que 
 
 ### Tecnologias Utilizadas
 
-- **Framework:** React 18 (com Hooks)
+- **Framework:** React 19 (com Hooks)
 - **Linguagem:** TypeScript
 - **Build Tool:** Vite
 - **Estilização:** Tailwind CSS v4 + `shadcn/ui` para componentes base
-- **Roteamento:** React Router DOM v6
+- **Roteamento:** React Router DOM v7
 - **Formulários:** React Hook Form + Zod para validação de esquemas
 - **Requisições HTTP:** Axios
 - **Gerenciamento de Estado:** React Context API
