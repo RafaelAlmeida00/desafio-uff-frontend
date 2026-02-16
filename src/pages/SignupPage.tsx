@@ -55,8 +55,12 @@ export function SignupPage() {
       setTimeout(() => {
         navigate('/login');
       }, 2000);
-    } catch (err: any) {
-      setError(err.message || 'Erro ao criar conta. Tente novamente.');
+    } catch (err: unknown) {
+      const msg =
+        err && typeof err === 'object' && 'response' in err
+          ? (err as { response?: { data?: { message?: string } } }).response?.data?.message
+          : undefined;
+      setError(msg || 'Erro ao criar conta. Tente novamente.');
       setIsLoading(false);
     }
   };

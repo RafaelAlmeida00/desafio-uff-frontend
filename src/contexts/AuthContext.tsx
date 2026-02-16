@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { authApi } from '@/services/api/auth.api'
@@ -27,9 +26,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const verifyAuth = useCallback(async () => {
     try {
-      const user = await authApi.me()
-      setUser(user)
-    } catch (error) {
+      const authenticatedUser = await authApi.me()
+      setUser(authenticatedUser)
+    } catch {
       setUser(null)
     } finally {
       setIsInitializing(false)
@@ -44,15 +43,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (email: string, senha: string) => {
       try {
         await authApi.login({ email, senha })
-        await verifyAuth() // Re-verifica a sessão para garantir que o cookie foi pego
+        await verifyAuth()
         toast({ title: 'Login realizado com sucesso' })
         navigate('/')
       } catch (e: unknown) {
-        setUser(null) // Limpa o usuário em caso de falha no login
+        setUser(null)
         const msg =
           e && typeof e === 'object' && 'response' in e
-            ? (e as { response?: { data?: { message?: string } } }).response?.data
-                ?.message
+            ? (e as { response?: { data?: { message?: string } } }).response?.data?.message
             : 'Erro ao realizar login'
         toast({
           variant: 'destructive',
@@ -81,15 +79,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (data: SignupInput) => {
       try {
         await authApi.signup(data)
-        await verifyAuth() // Verifica a sessão após o cadastro
+        await verifyAuth()
         toast({ title: 'Cadastro realizado com sucesso' })
         navigate('/')
       } catch (e: unknown) {
         setUser(null)
         const msg =
           e && typeof e === 'object' && 'response' in e
-            ? (e as { response?: { data?: { message?: string } } }).response?.data
-                ?.message
+            ? (e as { response?: { data?: { message?: string } } }).response?.data?.message
             : 'Erro ao realizar cadastro'
         toast({
           variant: 'destructive',
