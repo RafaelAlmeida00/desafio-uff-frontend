@@ -27,13 +27,13 @@ O objetivo Ã© fornecer uma experiÃªncia de usuÃ¡rio fluida e intuitiva par
 ### 1. PrÃ©-requisitos
 - Node.js v20+
 - pnpm (ou npm/yarn)
-- O [servidor backend](https://github.com/example/repo/tree/main/backend) deve estar em execuÃ§Ã£o.
+- O [servidor backend](https://github.com/RafaelAlmeida00/desafio-uff-backend) deve estar em execuÃ§Ã£o.
 
 ### 2. Passo a Passo
 
 1.  **Clone o repositÃ³rio e navegue atÃ© a pasta:**
     ```bash
-    git clone https://github.com/RafaelAlmeida00/desafio-uff-backend.git
+    git clone https://github.com/RafaelAlmeida00/desafio-uff-frontend.git
     cd <pasta gerada do clone>
     ```
 
@@ -141,3 +141,4 @@ Esta seÃ§Ã£o descreve possÃ­veis melhorias e novas funcionalidades que pod
 - **AutenticaÃ§Ã£o de Dois Fatores (2FA):** Adicionar uma camada extra de seguranÃ§a no login, exigindo um cÃ³digo de um aplicativo autenticador (TOTP).
 - **Content Security Policy (CSP):** Implementar um cabeÃ§alho CSP rigoroso para mitigar ainda mais os riscos de ataques XSS e de injeÃ§Ã£o de dados, controlando quais recursos o navegador pode carregar.
 - **Scanner de DependÃªncias Automatizado:** Integrar ferramentas como Snyk ou GitHub Dependabot para monitorar continuamente as dependÃªncias do projeto em busca de vulnerabilidades conhecidas.
+
