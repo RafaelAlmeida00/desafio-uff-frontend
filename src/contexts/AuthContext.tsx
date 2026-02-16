@@ -79,9 +79,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (data: SignupInput) => {
       try {
         await authApi.signup(data)
-        await verifyAuth()
+        setUser(null)
         toast({ title: 'Cadastro realizado com sucesso' })
-        navigate('/')
       } catch (e: unknown) {
         setUser(null)
         const msg =
@@ -96,7 +95,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         throw e
       }
     },
-    [toast, navigate, verifyAuth],
+    [toast],
   )
 
   useEffect(() => {

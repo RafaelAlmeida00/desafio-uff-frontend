@@ -3,6 +3,7 @@ export interface User {
   nome: string
   email: string
   createdAt?: string
+  updatedAt?: string
 }
 
 export interface LoginInput {
@@ -16,6 +17,3 @@ export interface SignupInput {
   senha: string
 }
 
-export interface AuthResponse {
-  token: string
-}

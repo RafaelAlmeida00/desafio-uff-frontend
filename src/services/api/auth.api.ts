@@ -1,10 +1,10 @@
-import { apiClient } from './client' // Ajuste o caminho conforme o seu projeto
+import { apiClient } from './client'
 import type { HateoasResponse } from '@/types/api.types'
-import type { User, LoginInput, SignupInput, AuthResponse } from '@/types/auth.types'
+import type { User, LoginInput, SignupInput } from '@/types/auth.types'
 
 export const authApi = {
   signup: async (data: SignupInput) => {
-    const res = await apiClient.post<HateoasResponse<Omit<User, 'createdAt'>>>(
+    const res = await apiClient.post<HateoasResponse<User>>(
       '/api/auth/signup',
       data
     )
@@ -12,7 +12,7 @@ export const authApi = {
   },
 
   login: async (data: LoginInput) => {
-    const res = await apiClient.post<HateoasResponse<AuthResponse>>(
+    const res = await apiClient.post<HateoasResponse<User>>(
       '/api/auth/login',
       data
     )
@@ -20,11 +20,11 @@ export const authApi = {
   },
 
   logout: async () => {
-    await apiClient.post('/api/auth/logout') // Certifique-se de que essa rota existe no seu backend
+    await apiClient.post('/api/auth/logout')
   },
 
   me: async () => {
-    const res = await apiClient.get<HateoasResponse<User>>('/api/auth/me') 
+    const res = await apiClient.get<HateoasResponse<User>>('/api/auth/me')
     return res.data.data
   }
 }
